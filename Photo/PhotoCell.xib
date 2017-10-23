@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PhotoCell" reuseIdentifier="PhotoCell" id="gTV-IL-0wX" customClass="PhotoCell">
+            <rect key="frame" x="0.0" y="0.0" width="136" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="136" height="130"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jMl-aG-xwf">
+                        <rect key="frame" x="0.0" y="0.0" width="136" height="130"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected" translatesAutoresizingMaskIntoConstraints="NO" id="3JB-5h-HZz">
+                        <rect key="frame" x="111" y="105" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="SG8-sR-8rz"/>
+                            <constraint firstAttribute="width" secondItem="3JB-5h-HZz" secondAttribute="height" multiplier="1:1" id="djj-oH-yFa"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="jMl-aG-xwf" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2ec-t7-RAK"/>
+                <constraint firstAttribute="bottom" secondItem="3JB-5h-HZz" secondAttribute="bottom" constant="5" id="JXp-Zn-HY5"/>
+                <constraint firstAttribute="trailing" secondItem="jMl-aG-xwf" secondAttribute="trailing" id="NGv-cm-WAt"/>
+                <constraint firstItem="jMl-aG-xwf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iCF-Gl-FfN"/>
+                <constraint firstAttribute="bottom" secondItem="jMl-aG-xwf" secondAttribute="bottom" id="pEt-9a-3VZ"/>
+                <constraint firstAttribute="bottom" secondItem="jMl-aG-xwf" secondAttribute="bottom" id="pXq-LG-sLq"/>
+                <constraint firstAttribute="trailing" secondItem="3JB-5h-HZz" secondAttribute="trailing" constant="5" id="tAP-Bu-R1Q"/>
+            </constraints>
+            <size key="customSize" width="136" height="130"/>
+            <connections>
+                <outlet property="imgVIew" destination="jMl-aG-xwf" id="GQS-dh-vqv"/>
+                <outlet property="selectedImgView" destination="3JB-5h-HZz" id="u4v-tk-Vwq"/>
+            </connections>
+            <point key="canvasLocation" x="75" y="105"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="selected" width="20" height="20"/>
+    </resources>
+</document>
