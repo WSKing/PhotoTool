@@ -31,6 +31,11 @@
 
 @implementation CameraController
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.session stopRunning];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initDevice];
