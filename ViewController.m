@@ -40,7 +40,7 @@
 
 #pragma mark --actions
 - (void)photoAction {
-    [CWPhotoTool showPhotoSheetMaxCount:3 forViewController:self completion:^(NSArray *imageArray) {
+    [CWPhotoTool showPhotoSheetMaxCount:5 forViewController:self completion:^(NSArray *imageArray) {
         [self.dataList addObjectsFromArray:imageArray];
         [self.collectionView reloadData];
     }];

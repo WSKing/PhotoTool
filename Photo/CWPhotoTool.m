@@ -10,9 +10,9 @@
 #import <UIKit/UIKit.h>
 #import <MMSheetView.h>
 #import "CWPhotoController.h"
-@interface CWPhotoTool()<CWPhotoLibiraryDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+#import "CameraController.h"
+@interface CWPhotoTool()<CWPhotoLibiraryDelegate, TakePhotoCompleteDelegate>
 @property (nonatomic, copy) CWPhotoMutiPickerCompletion completion;//完成时调用
-@property (nonatomic, strong) UIImagePickerController *picker;
 @end
 @implementation CWPhotoTool
 
@@ -33,10 +33,15 @@ static CWPhotoTool *_instance;
     MMPopupItemHandler block = ^(NSInteger index) {
         if (index == 0) {
             //相机
+            /*
             if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
                     [viewController presentViewController:[CWPhotoTool sharedInstance].picker animated:YES completion:nil];
             }else
-                return ;
+                return ;*/
+            CameraController *cameraCtrl = [[CameraController alloc] init];
+            cameraCtrl.maxCount = maxCount;
+            cameraCtrl.delegate = [CWPhotoTool sharedInstance];
+            [viewController.navigationController pushViewController:cameraCtrl animated:YES];
 
         }else {
             //相册
@@ -60,36 +65,11 @@ static CWPhotoTool *_instance;
     }
 }
 
-#pragma mark --imagePicker delegate
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    [picker dismissViewControllerAnimated:YES completion:^{
-        UIImage *image;
-        image = [info objectForKey:UIImagePickerControllerEditedImage];
-        if (image == nil) {
-            image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        }
-        if (self.completion) {
-            self.completion(@[image]);
-        }
-    }];
-}
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [picker dismissViewControllerAnimated:YES completion:nil];
+#pragma mark --Camera delegate
+- (void)didCompleteTakePhoto:(NSArray *)imageList {
     if (self.completion) {
-        self.completion(nil);
+        self.completion(imageList);
     }
 }
 
-- (UIImagePickerController *)picker {
-    if (!_picker) {
-        _picker = [[UIImagePickerController alloc] init];
-        _picker.delegate = self;
-        _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        _picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
-        _picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-        _picker.allowsEditing = YES;
-    }
-    return _picker;
-}
 @end

@@ -76,7 +76,6 @@
             HUD.removeFromSuperViewOnHide = YES;
             [HUD showAnimated:YES];
             [HUD hideAnimated:YES afterDelay:1];
-           
         }
     }else {
         [self.selectedImgList removeObject:cell.imgVIew.image];
